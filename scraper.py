@@ -53,7 +53,8 @@ if __name__ == '__main__':
             page = input("Please provide the link to the webpage you would like to scrape ")
             if page[:6] != 'https//':
                 page = 'https://' + page
-            with urllib.request.urlopen(page) as opened_page:
+            req = urllib.request.Request(page, headers)
+            with urllib.request.urlopen(req) as opened_page:
                 opened_page = opened_page.read()
             scrape(opened_page)
             go = False
